@@ -1,10 +1,16 @@
 
-
 let gulp = require("gulp");
 let uglify = require("gulp-uglify"); //压缩模块
 let babel = require("gulp-babel"); //ES6的编译模块
 let cleancss = require("gulp-clean-css");
 let webserver = require("gulp-webserver");
+
+gulp.task("copy", ()=>{
+	//读取所有文件 ,//写入到dist目录
+	gulp.src("./src/**/*.*").pipe( gulp.dest("./dist") )
+	
+})
+
 
 gulp.task("buildJS", ()=>{
 	//只复制
@@ -36,8 +42,7 @@ gulp.task("buildHTML", ()=>{
 gulp.task('webserver', function() {
 	gulp.src('src')
 		.pipe(webserver({
-			livereload: true,//是否支持热部署
-			port:10002,
+			livereload: true, //是否支持热部署
 			https: true,      //
 			proxies : [
 				{	
@@ -47,6 +52,5 @@ gulp.task('webserver', function() {
 			]
 		}));
 });
-
 
 gulp.task("build", ["buildJS","buildHTML", "buildCSS"])
