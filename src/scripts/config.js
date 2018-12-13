@@ -1,13 +1,12 @@
 
 
 requirejs.config({
-	baseUrl:"../scripts/",
+	baseUrl:"../",
 	paths:{
-		"jquery" : "jquery-1.9.0",
-		"common" : "common",
-		"swiper" : "swiper",
-		"fontscroll" : "fontscroll",
-		"a" : "a"
+		"jquery" : "scripts/libs/jquery.min",
+		"common" : "scripts/common",
+		"swiper" : "scripts/libs/swiper.min",
+		"fontscroll" : "scripts/fontscroll",
 	}
 	
 })

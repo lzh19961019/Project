@@ -4,12 +4,7 @@ let uglify = require("gulp-uglify"); //压缩模块
 let babel = require("gulp-babel"); //ES6的编译模块
 let cleancss = require("gulp-clean-css");
 let webserver = require("gulp-webserver");
-
-gulp.task("copy", ()=>{
-	//读取所有文件 ,//写入到dist目录
-	gulp.src("./src/**/*.*").pipe( gulp.dest("./dist") )
-	
-})
+let sass = require("gulp-sass"); //编译SCSS到CSS
 
 
 gulp.task("buildJS", ()=>{
@@ -28,22 +23,38 @@ gulp.task("buildJS", ()=>{
 
 gulp.task("buildCSS", ()=>{
 	
-	gulp.src("./src/**/*.css")
-		.pipe(cleancss())
+	gulp.src("./src/**/*.scss")
+		// .pipe(cleancss())
+		.pipe(sass())
 		.pipe( gulp.dest("./dist") )
 	
 })
 
 gulp.task("buildHTML", ()=>{
 	gulp.src("./src/**/*.html").pipe( gulp.dest("./dist") );
+	gulp.src("./src/pages/*.js").pipe( gulp.dest("./dist/pages"));
 })
 
+gulp.task("buildStaticResource", ()=>{
+	gulp.src("./src/static/**/*.*").pipe( gulp.dest("./dist/static") );
+})
 
-gulp.task('webserver', function() {
-	gulp.src('src')
+gulp.task("watching", ()=>{
+	gulp.watch("./src/**/*.scss", ["buildCSS"]);
+	gulp.watch("./src/**/*.js", ["buildJS"]);
+	gulp.watch("./src/pages/*.js",["buildHTML"]);
+	gulp.watch("./src/**/*.html", ["buildHTML"]);
+});
+
+
+
+//yintao01分支下的修改
+gulp.task('webserver', ["watching"], function() {
+	gulp.src('dist')
 		.pipe(webserver({
 			livereload: true, //是否支持热部署
-			https: true,      //
+			
+			port:8000,//
 			proxies : [
 				{	
 					source: '/listmore', 
@@ -53,4 +64,4 @@ gulp.task('webserver', function() {
 		}));
 });
 
-gulp.task("build", ["buildJS","buildHTML", "buildCSS"])
+gulp.task("build", ["buildJS","buildHTML", "buildCSS", "buildStaticResource"])
