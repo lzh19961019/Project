@@ -107,6 +107,15 @@
 				width: 334px;
 				height: 60px;
 				margin-left: 10px;
+				.logTip{
+					padding-left: 20px;
+					color: #ff6947;
+					font-size: 12px;
+					display: none;
+					margin-top: 5px;
+					margin-left:27px;
+					background: url(https://oauth2.lechange.cn/include/imgs/common_icon_warning.png) no-repeat 0 2px;
+				}
 				.loginButn{
 					width: 282px;
 					height: 42px;

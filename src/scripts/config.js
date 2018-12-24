@@ -7,6 +7,7 @@ requirejs.config({
 		"common" : "scripts/common",
 		"swiper" : "scripts/libs/swiper.min",
 		"fontscroll" : "scripts/fontscroll",
+		"jquery.cookie":"scripts/libs/jquery.cookie"
 	}
 	
 })

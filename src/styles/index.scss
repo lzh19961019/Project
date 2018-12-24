@@ -75,7 +75,7 @@
 	box-shadow: -1px -1px 20px #c7c7c7;
 	top: -5px;
 	padding: 0px;
-	transition:0.8s;
+	transition:top 0.8s,box-shadow 0.8s;
 }
 
 @mixin h2-style{
@@ -192,6 +192,14 @@ body{
 	right: 0px;
 	z-index: 99;
 	background: url(https://ecstore.oss-cn-hangzhou.aliyuncs.com/public/images/fb/06/69/e514a78cdc593575a11c05236f025bd4d7f2b47b.png?1495607683#h);
+	img{
+		position: absolute;
+		right: 0px;
+		display: none;
+	}
+	&:hover img{
+		display: block;
+	}
 }
 
 // 页头
@@ -385,7 +393,7 @@ nav{
 			}
 		}
 	}
-	span{
+	.swiper-pagination-bullet{
 		width: 13px;
 		height:13px;
 		}
@@ -581,6 +589,8 @@ main{
 		width: 1100px;
 		height: 264px;
 			li{
+				position: relative;
+				top:0;
 				&:hover{
 					@include _shadow;
 				}
@@ -644,6 +654,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top:0;
 					&:hover{
 					@include _shadow;
 					}
@@ -679,6 +691,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top:0;
 					&:hover{
 						@include _shadow;
 					}
@@ -759,6 +773,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top:0;
 					&:hover{
 					@include _shadow;
 					}
@@ -794,6 +810,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top:0;
 					&:hover{
 						@include _shadow;
 					}
@@ -852,6 +870,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top:0;
 					&:hover{
 					@include _shadow;
 					}
@@ -934,6 +954,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top:0;
 					&:hover{
 					@include _shadow;
 					}
@@ -969,6 +991,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top:0;
 					&:hover{
 						@include _shadow;
 					}
@@ -1026,6 +1050,8 @@ main{
 					width: 264px;
 					height:360px;
 					background: #fff;
+					position: relative;
+					top: 0;
 					&:hover{
 					@include _shadow;
 					}
@@ -1065,6 +1091,11 @@ main{
 			font-size:0;
 			@include hot;
 			background: #fff;
+			position: relative;
+			top:0;
+			&:hover{
+				@include _shadow
+			}
 			div.chat{
 				@include chat;
 				ul{
@@ -1082,6 +1113,11 @@ main{
 			@include hot;
 			margin-left:16px;
 			background:#fff;
+			top:0;
+			position: relative;
+			&:hover{
+				@include _shadow
+			}
 			div.chat{
 				@include chat;
 				ul{
@@ -1099,6 +1135,11 @@ main{
 			@include hot;
 			margin-left:16px;
 			background: #fff;
+			top:0;
+			position: relative;
+			&:hover{
+				@include _shadow
+			}
 			div.chat{
 				@include chat;
 				ul{
@@ -1116,6 +1157,11 @@ main{
 			@include hot;
 			margin-left:16px;
 			background: #fff;
+			top:0;
+			position: relative;
+			&:hover{
+				@include _shadow
+			}
 			div.chat{
 				@include chat;
 				ul{

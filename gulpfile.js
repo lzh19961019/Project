@@ -7,6 +7,13 @@ let webserver = require("gulp-webserver");
 let sass = require("gulp-sass"); //编译SCSS到CSS
 
 
+
+gulp.task("buildJSON",()=>{
+	gulp.src("./src/json-data/*.json")
+		.pipe( gulp.dest("./dist/json-data") )
+})
+
+
 gulp.task("buildJS", ()=>{
 	//只复制
 	gulp.src("./src/scripts/libs/*.js")
@@ -26,6 +33,7 @@ gulp.task("buildCSS", ()=>{
 	gulp.src("./src/**/*.scss")
 		// .pipe(cleancss())
 		.pipe(sass())
+		.pipe(sass().on('error', sass.logError))
 		.pipe( gulp.dest("./dist") )
 	
 })
@@ -44,11 +52,12 @@ gulp.task("watching", ()=>{
 	gulp.watch("./src/**/*.js", ["buildJS"]);
 	gulp.watch("./src/pages/*.js",["buildHTML"]);
 	gulp.watch("./src/**/*.html", ["buildHTML"]);
+	gulp.watch("./src/**/*.json", ["buildJSON"]);
 });
 
 
 
-//yintao01分支下的修改
+
 gulp.task('webserver', ["watching"], function() {
 	gulp.src('dist')
 		.pipe(webserver({
@@ -64,4 +73,4 @@ gulp.task('webserver', ["watching"], function() {
 		}));
 });
 
-gulp.task("build", ["buildJS","buildHTML", "buildCSS", "buildStaticResource"])
+gulp.task("build", ["buildJSON","buildJS","buildHTML", "buildCSS", "buildStaticResource"])

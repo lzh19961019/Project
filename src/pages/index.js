@@ -1,7 +1,7 @@
 require(["../scripts/config.js"], function() {
-	require(["common", "fontscroll", "jquery", "swiper"], function(com, font, _$, Swiper) {
+	require(["common", "fontscroll", "jquery", "swiper"], function(com, font, $, Swiper) {
 
-		new Swiper('.swiper-container', {
+		var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true, //可选选项，自动滑动
 			loop: true,
 			effect: 'fade',
@@ -17,13 +17,18 @@ require(["../scripts/config.js"], function() {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
 			},
-
+		})
+		
+		$(".swiper-container").hover(function(){
+			mySwiper.autoplay.stop();
+		},function(){
+			mySwiper.autoplay.start();
 		})
 
 
-		_$(function() {
-			_$(".tabox-1 .chanlist").find("li").eq(0).addClass("checkactive");
-			_$(".tabox-1 .check1").show();
+		$(function() {
+			$(".tabox-1 .chanlist").find("li").eq(0).addClass("checkactive");
+			$(".tabox-1 .check1").show();
 			var timelt = null;
 			var now = 0;
 
@@ -32,43 +37,43 @@ require(["../scripts/config.js"], function() {
 				timelt = setInterval(function() {
 					if (now) {
 						now = 0;
-						_$(".tabox-1 .check1").fadeIn(500);
-						_$(".tabox-1 .check2").hide();
-						_$(".tabox-1 .chanlist").find("li").eq(0).addClass("checkactive").siblings().removeClass("checkactive");
+						$(".tabox-1 .check1").fadeIn(500);
+						$(".tabox-1 .check2").hide();
+						$(".tabox-1 .chanlist").find("li").eq(0).addClass("checkactive").siblings().removeClass("checkactive");
 					} else {
 						now = 1;
-						_$(".tabox-1 .check2").fadeIn(500);
-						_$(".tabox-1 .check1").hide();
-						_$(".tabox-1 .chanlist").find("li").eq(1).addClass("checkactive").siblings().removeClass("checkactive");
+						$(".tabox-1 .check2").fadeIn(500);
+						$(".tabox-1 .check1").hide();
+						$(".tabox-1 .chanlist").find("li").eq(1).addClass("checkactive").siblings().removeClass("checkactive");
 					}
 				}, 4800)
 			}
 			startMovelt();
-			_$(".tabox-1 .chanlist").on("mouseover", "li", function() {
+			$(".tabox-1 .chanlist").on("mouseover", "li", function() {
 				clearInterval(timelt);
-				_$(this).addClass("checkactive").siblings().removeClass("checkactive");
-				if (_$(this).index() == 0) {
-					_$(".tabox-1 .check1").fadeIn(500);
-					_$(".tabox-1 .check2").hide();
+				$(this).addClass("checkactive").siblings().removeClass("checkactive");
+				if ($(this).index() == 0) {
+					$(".tabox-1 .check1").fadeIn(500);
+					$(".tabox-1 .check2").hide();
 				} else {
-					_$(".tabox-1 .check2").fadeIn(500);
-					_$(".tabox-1 .check1").hide();
+					$(".tabox-1 .check2").fadeIn(500);
+					$(".tabox-1 .check1").hide();
 				}
 			});
-			_$(".tabox-1 .chanlist").on("mouseout", "li", function() {
+			$(".tabox-1 .chanlist").on("mouseout", "li", function() {
 				startMovelt();
 			});
-			_$(".tabox-1").on("mouseover", function() {
+			$(".tabox-1").on("mouseover", function() {
 				clearInterval(timelt)
 			});
-			_$(".tabox-1").on("mouseout", function() {
+			$(".tabox-1").on("mouseout", function() {
 				startMovelt()
 			});
 		})
 
-		_$(function() {
-			_$(".tabox-2 .chanlist").find("li").eq(0).addClass("checkactive");
-			_$(".tabox-2 .check1").show();
+		$(function() {
+			$(".tabox-2 .chanlist").find("li").eq(0).addClass("checkactive");
+			$(".tabox-2 .check1").show();
 			var timelt = null;
 			var now = 0;
 
@@ -77,43 +82,43 @@ require(["../scripts/config.js"], function() {
 				timelt = setInterval(function() {
 					if (now) {
 						now = 0;
-						_$(".tabox-2 .check1").fadeIn(500);
-						_$(".tabox-2 .check2").hide();
-						_$(".tabox-2 .chanlist").find("li").eq(0).addClass("checkactive").siblings().removeClass("checkactive");
+						$(".tabox-2 .check1").fadeIn(500);
+						$(".tabox-2 .check2").hide();
+						$(".tabox-2 .chanlist").find("li").eq(0).addClass("checkactive").siblings().removeClass("checkactive");
 					} else {
 						now = 1;
-						_$(".tabox-2 .check2").fadeIn(500);
-						_$(".tabox-2 .check1").hide();
-						_$(".tabox-2 .chanlist").find("li").eq(1).addClass("checkactive").siblings().removeClass("checkactive");
+						$(".tabox-2 .check2").fadeIn(500);
+						$(".tabox-2 .check1").hide();
+						$(".tabox-2 .chanlist").find("li").eq(1).addClass("checkactive").siblings().removeClass("checkactive");
 					}
 				}, 4800)
 			}
 			startMovelt();
-			_$(".tabox-2 .chanlist").on("mouseover", "li", function() {
+			$(".tabox-2 .chanlist").on("mouseover", "li", function() {
 				clearInterval(timelt);
-				_$(this).addClass("checkactive").siblings().removeClass("checkactive");
-				if (_$(this).index() == 0) {
-					_$(".tabox-2 .check1").fadeIn(500);
-					_$(".tabox-2 .check2").hide();
+				$(this).addClass("checkactive").siblings().removeClass("checkactive");
+				if ($(this).index() == 0) {
+					$(".tabox-2 .check1").fadeIn(500);
+					$(".tabox-2 .check2").hide();
 				} else {
-					_$(".tabox-2 .check2").fadeIn(500);
-					_$(".tabox-2 .check1").hide();
+					$(".tabox-2 .check2").fadeIn(500);
+					$(".tabox-2 .check1").hide();
 				}
 			});
-			_$(".tabox-2 .chanlist").on("mouseout", "li", function() {
+			$(".tabox-2 .chanlist").on("mouseout", "li", function() {
 				startMovelt();
 			});
-			_$(".tabox-2").on("mouseover", function() {
+			$(".tabox-2").on("mouseover", function() {
 				clearInterval(timelt)
 			});
-			_$(".tabox-2").on("mouseout", function() {
+			$(".tabox-2").on("mouseout", function() {
 				startMovelt()
 			});
 		})
 
-		_$(function() {
-			_$(".tabox-4 .chanlist").find("li").eq(0).addClass("checkactive");
-			_$(".tabox-4 .check1").show();
+		$(function() {
+			$(".tabox-4 .chanlist").find("li").eq(0).addClass("checkactive");
+			$(".tabox-4 .check1").show();
 			var timelt = null;
 			var now = 0;
 
@@ -122,46 +127,46 @@ require(["../scripts/config.js"], function() {
 				timelt = setInterval(function() {
 					if (now) {
 						now = 0;
-						_$(".tabox-4 .check1").fadeIn(500);
-						_$(".tabox-4 .check2").hide();
-						_$(".tabox-4 .chanlist").find("li").eq(0).addClass("checkactive").siblings().removeClass("checkactive");
+						$(".tabox-4 .check1").fadeIn(500);
+						$(".tabox-4 .check2").hide();
+						$(".tabox-4 .chanlist").find("li").eq(0).addClass("checkactive").siblings().removeClass("checkactive");
 					} else {
 						now = 1;
-						_$(".tabox-4 .check2").fadeIn(500);
-						_$(".tabox-4 .check1").hide();
-						_$(".tabox-4 .chanlist").find("li").eq(1).addClass("checkactive").siblings().removeClass("checkactive");
+						$(".tabox-4 .check2").fadeIn(500);
+						$(".tabox-4 .check1").hide();
+						$(".tabox-4 .chanlist").find("li").eq(1).addClass("checkactive").siblings().removeClass("checkactive");
 					}
 				}, 4800)
 			}
 			startMovelt();
-			_$(".tabox-4 .chanlist").on("mouseover", "li", function() {
+			$(".tabox-4 .chanlist").on("mouseover", "li", function() {
 				clearInterval(timelt);
-				_$(this).addClass("checkactive").siblings().removeClass("checkactive");
-				if (_$(this).index() == 0) {
-					_$(".tabox-4 .check1").fadeIn(500);
-					_$(".tabox-4 .check2").hide();
+				$(this).addClass("checkactive").siblings().removeClass("checkactive");
+				if ($(this).index() == 0) {
+					$(".tabox-4 .check1").fadeIn(500);
+					$(".tabox-4 .check2").hide();
 				} else {
-					_$(".tabox-4 .check2").fadeIn(500);
-					_$(".tabox-4 .check1").hide();
+					$(".tabox-4 .check2").fadeIn(500);
+					$(".tabox-4 .check1").hide();
 				}
 			});
-			_$(".tabox-4 .chanlist").on("mouseout", "li", function() {
+			$(".tabox-4 .chanlist").on("mouseout", "li", function() {
 				startMovelt();
 			});
-			_$(".tabox-4").on("mouseover", function() {
+			$(".tabox-4").on("mouseover", function() {
 				clearInterval(timelt)
 			});
-			_$(".tabox-4").on("mouseout", function() {
+			$(".tabox-4").on("mouseout", function() {
 				startMovelt()
 			});
 		})
 
-		_$(function() {
+		$(function() {
 			function chatScroll() {
-				_$(".swapcomment").find("ul:first").animate({
+				$(".swapcomment").find("ul:first").animate({
 					marginTop: "-33px"
 				}, 700, function() {
-					_$(this).css({
+					$(this).css({
 						marginTop: "0px"
 					}).find("li:first").appendTo(this);
 				})
@@ -169,95 +174,95 @@ require(["../scripts/config.js"], function() {
 			setInterval(chatScroll, 2000)
 		})
 
-		_$(".new-goods li:nth-child(1)").mouseover(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(1)").mouseover(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/image/TF5-28902.png"
 			});
-			_$(this).find("div").css("display", "none");
-			_$(this).find(".te").css("display", "none")
-			_$(this).find("p").css("display", "none");
+			$(this).find("div").hide();
+			$(this).find(".te").hide()
+			$(this).find("p").hide();
 		})
-		_$(".new-goods li:nth-child(1)").mouseout(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(1)").mouseout(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/public/image/TF5-263x263.png"
 			});
-			_$(this).find("div").css("display", "block");
-			_$(this).find(".te").css("display", "block")
-			_$(this).find("p").css("display", "block");
+			$(this).find("div").show();
+			$(this).find(".te").show()
+			$(this).find("p").show();
 		})
-		_$(".new-goods li:nth-child(2)").mouseover(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(2)").mouseover(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/image/TF3-329.png"
 			});
-			_$(this).find("div").css("display", "none");
-			_$(this).find(".te").css("display", "none")
-			_$(this).find("p").css("display", "none");
+			$(this).find("div").hide();
+			$(this).find(".te").hide()
+			$(this).find("p").hide();
 		})
-		_$(".new-goods li:nth-child(2)").mouseout(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(2)").mouseout(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/public/image/TF3-263x263.png"
 			});
-			_$(this).find("div").css("display", "block");
-			_$(this).find(".te").css("display", "block")
-			_$(this).find("p").css("display", "block");
+			$(this).find("div").show();
+			$(this).find(".te").show()
+			$(this).find("p").show();
 		})
-		_$(".new-goods li:nth-child(3)").mouseover(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(3)").mouseover(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/image/K5-341.png"
 			});
-			_$(this).find("div").css("display", "none");
-			_$(this).find(".te").css("display", "none")
-			_$(this).find("p").css("display", "none");
+			$(this).find("div").hide();
+			$(this).find(".te").hide()
+			$(this).find("p").hide();
 		})
-		_$(".new-goods li:nth-child(3)").mouseout(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(3)").mouseout(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/public/image/K5-263x263.png"
 			});
-			_$(this).find("div").css("display", "block");
-			_$(this).find(".te").css("display", "block")
-			_$(this).find("p").css("display", "block");
+			$(this).find("div").show();
+			$(this).find(".te").show()
+			$(this).find("p").show();
 		})
-		_$(".new-goods li:nth-child(4)").mouseover(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(4)").mouseover(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/image/K6-268.png"
 			});
-			_$(this).find("div").css("display", "none");
-			_$(this).find(".te").css("display", "none")
-			_$(this).find("p").css("display", "none");
+			$(this).find("div").hide();
+			$(this).find(".te").hide()
+			$(this).find("p").hide();
 		})
-		_$(".new-goods li:nth-child(4)").mouseout(function() {
-			_$(this).find("img").attr({
+		$(".new-goods li:nth-child(4)").mouseout(function() {
+			$(this).find("img").attr({
 				"src": "https://ecstore.oss-cn-hangzhou.aliyuncs.com/public/image/K6-263x263.png"
 			});
-			_$(this).find("div").css("display", "block");
-			_$(this).find(".te").css("display", "block")
-			_$(this).find("p").css("display", "block");
+			$(this).find("div").show();
+			$(this).find(".te").show()
+			$(this).find("p").show();
 		})
 		
 		
 
 		
 		
-		_$(function() {
+		$(function() {
 
-			_$("nav ul li").mouseover(function() {
+			$("nav ul li").mouseover(function() {
 
-				_$("nav ol li").eq(_$(this).index()).show().siblings().hide();
+				$("nav ol li").eq($(this).index()).show().siblings().hide();
 
 			})
-			_$(".swiper-container").mouseover(function() {
-				_$("nav ol li").css("display", "none")
+			$(".swiper-container").mouseover(function() {
+				$("nav ol li").hide()
 			})
-			_$("#nav-top").mouseover(function() {
-				_$("nav ol li").css("display", "none")
+			$("#nav-top").mouseover(function() {
+				$("nav ol li").hide()
 			})
 		})
 
 
-		var $nav = _$("#scrollTop")
+		var $nav = $("#scrollTop")
 
 		$(window).scroll(function() {
-			var scrollTop = _$(this).scrollTop();
+			var scrollTop = $(this).scrollTop();
 			if (scrollTop >= 1000) {
 				$nav.fadeIn(500);
 			} else {
@@ -265,8 +270,8 @@ require(["../scripts/config.js"], function() {
 			}
 		})
 
-			_$("#scrollTop").click(function(){
-				_$("html").animate({scrollTop: 0}, 500);
+			$("#scrollTop").click(function(){
+				$("html").animate({scrollTop: 0}, 500);
 			})
 
 
