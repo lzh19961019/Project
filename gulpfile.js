@@ -32,7 +32,7 @@ gulp.task("buildCSS", ()=>{
 	
 	gulp.src("./src/**/*.scss")
 		// .pipe(cleancss())
-		.pipe(sass())
+		
 		.pipe(sass().on('error', sass.logError))
 		.pipe( gulp.dest("./dist") )
 	
